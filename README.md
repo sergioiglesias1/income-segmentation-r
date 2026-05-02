@@ -49,13 +49,14 @@ Applied on standardised indicators (mean 0, variance 1).
 | PC3 | 12.24% | 88.67% |
 
 PC1 captures the development axis, with high loadings on GDP per capita, life expectancy and internet access. PC2 reflects economic volatility, driven mainly by inflation. Three components explain 88.67% of total variance, and the 3D scatter shows visible separation between income groups before any clustering is applied.
+
 ![PCA 3D](visualization/pca_viz/pca_3d.png)
 
 ---
 
 ## K-Means results
 
-`k = 4`, confirmed by the elbow method below, coherent with the World Bank's four income classifications.
+The best decision is having four clusters (`k = 4`), confirmed by the elbow method below, coherent with the World Bank's four income classifications.
 
 ![Elbow Plot](visualization/kmeans_viz/elbow_method.png)
 
@@ -68,7 +69,11 @@ PC1 captures the development axis, with high loadings on GDP per capita, life ex
 | 3 | $4,730 | 63.7 | 11.1% |
 | 4 | $22,369 | 73.9 | 10.2% |
 
-Cluster 1 captures high-income economies, Cluster 3 groups the poorest countries by GDP and life expectancy. Clusters 2 and 4 sit in the middle and overlap, mainly split by inflation rather than overall development.
+Where:
+• Cluster 1: High-income economies
+• Cluster 2: Middle-development countries
+• Cluster 3: Poorest countries
+• Cluster 4: Middle-development countries (differentiated by inflation because of its overlapping with cluster 2)
 
 ![K-Means Clusters](visualization/kmeans_viz/kmeans_clusters.png)
 
