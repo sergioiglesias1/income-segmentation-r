@@ -70,6 +70,7 @@ The best decision is having four clusters (`k = 4`), confirmed by the elbow meth
 | 4 | $22,369 | 73.9 | 10.2% |
 
 Where:
+
 • Cluster 1: High-income economies
 • Cluster 2: Middle-development countries
 • Cluster 3: Poorest countries
