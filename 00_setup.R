@@ -2,8 +2,8 @@ gc()
 
 source("config.R")
 
-install.packages(c("dplyr", "psych", "moments", "factoextra",
-                   "scatterplot3d", "ggplot2", "reshape2", "WDI", "clusterCrit", "aricode"))
+required_packages <- c("dplyr", "psych", "moments", "factoextra",
+                       "scatterplot3d", "ggplot2", "reshape2", "WDI", "clusterCrit", "aricode")
 
 for (pkg in required_packages) {
   if (!requireNamespace(pkg, quietly = T)) install.packages(pkg)
