@@ -12,7 +12,7 @@ R workflow that pulls live data directly from the World Bank API (via the WDI pa
 
 The pipeline runs in 3 steps after setting parameters in `config.R`:
 
-- **Setup:** fetches World Bank indicators (GDP per capita, internet users, mobile subscriptions, life expectancy, inflation), cleans and standardises the data, runs KMO and Bartlett adequacy tests (KMO = 0.79, Bartlett p < 0.001).
+- **Setup:** loads World Bank indicators (GDP per capita, internet users, mobile subscriptions, life expectancy, inflation), cleans and standardises the data, runs KMO and Bartlett adequacy tests (KMO = 0.79, Bartlett p < 0.001).
 - **PCA:** manual eigen-decomposition, scree plot, distribution analysis for key indicators, and a 3D scatter coloured by real income group.
 - **K-Means:** elbow method to confirm `k = 4`, cluster visualisation, GDP boxplot by cluster, and a purity heatmap cross-tabulating clusters vs real income levels.
 
@@ -55,7 +55,9 @@ PC1 captures the development axis, with high loadings on GDP per capita, life ex
 
 ## K-Means results
 
-`k = 4`, confirmed by the elbow method, coherent with the World Bank's four income classifications.
+`k = 4`, confirmed by the elbow method below, coherent with the World Bank's four income classifications.
+
+![Elbow Plot](visualization/kmeans_viz/elbow_method.png)
 
 **Centroid summary:**
 
@@ -79,9 +81,7 @@ Cluster 1 captures high-income economies, Cluster 3 groups the poorest countries
 | Davies-Bouldin | 0.91 |
 | NMI | 0.45 |
 
-The metrics show moderate segmentation. A Silhouette of 0.35 and NMI of 0.45 mean K-Means picks up real income structure but the boundaries between groups are blurry. Calinski-Harabasz of 98.43 and Davies-Bouldin of 0.91 are solid for this kind of data, the overlap in the middle clusters makes sense since income is a spectrum, not four clean buckets.
-
----
+The metrics point to a model that works, but not perfectly, which is the expected outcome for this kind of data. A Silhouette of 0.35 and NMI of 0.45 confirm that K-Means recovers real income structure without supervision, though boundaries between middle-income groups remain ambiguous. Calinski-Harabasz of 98.43 and Davies-Bouldin of 0.91 are strong results given the natural intersect: income is a continuous incognito compressed into four labels, so some ambiguity at the edges is structural here. The high-income and low-income clusters (1 and 3) are clean and well-separated. Finally, the noise lives in the middle, where the WDI's own classifications are least consistent.
 
 ## How to Run
 
