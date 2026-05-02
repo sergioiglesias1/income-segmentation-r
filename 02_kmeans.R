@@ -1,6 +1,6 @@
 # K-MEANS
 source("config.R")
-load("C:/Users/Usuario/Downloads/repo_R/data/.workspace.RData")
+load("data/.workspace.RData")
 
 library(ggplot2)
 library(factoextra)
