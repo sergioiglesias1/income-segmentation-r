@@ -39,7 +39,7 @@ ggsave(file.path(PLOTS2_DIR, "kmeans_clusters.png"), p_cluster)
 ### CENTROIDS ###
 
 centroids <- aggregate(X, by = list(Cluster = res_kmeans$cluster), FUN = mean)
-cat("\nCENTROIDES POR CLUSTER (Promedios económicos):\n")
+cat("\nCENTROIDES BY CLUSTER:\n")
 print(centroids)
 
 ### Boxplot (GDPpc by Cluster) ###
