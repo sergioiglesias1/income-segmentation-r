@@ -31,9 +31,9 @@ income-segmentation-r/
 ├── 00_setup.R            # API pull, cleaning, KMO/Bartlett, scaling
 ├── 01_pca.R              # PCA: eigen-decomposition, scree plot, 3D scatter
 ├── 02_kmeans.R           # K-Means: elbow, clusters, boxplot, purity heatmap
-├── config.R              # Parameters and paths: start here
 ├── LICENSE
-└── README.md
+├── README.md
+└── config.R              # Parameters and paths: start here
 ```
 
 ---
