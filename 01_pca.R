@@ -1,4 +1,7 @@
-# PCA
+###########
+### PCA ###
+###########
+
 source("config.R")
 load("C:/Users/Usuario/Downloads/repo_R/data/.workspace.RData")
 
@@ -32,7 +35,7 @@ for (col in key_eco_indicators) {
   lines(density(vals), col = "red", lwd = 3)
   curve(dnorm(x, m, s), add = T, col = "blue", lwd = 2, lty = 2)
   
-  # Log-Normal distribution (typical for economic data if > 0)
+  # Log-Normal distribution (typical for economic data if xi > 0)
   if(all(vals > 0)) {
     mu_log <- log(m^2 / sqrt(v + m^2))
     sd_log <- sqrt(log(1 + v / m^2))

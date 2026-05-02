@@ -19,13 +19,16 @@ ggsave(file.path(PLOTS2_DIR, "elbow_method.png"), p_elbow)
 ### K-MEANS CLUSTERING ###
 
 set.seed(KMEANS_SEED)
-res_kmeans <- kmeans(X_scaled, centers = KMEANS_K, nstart = KMEANS_NSTART)
+res_kmeans <- kmeans(
+  X_scaled, 
+  centers = KMEANS_K, 
+  nstart = KMEANS_NSTART
+)
 
 # Saving clusters into the original df
 df_raw$cluster_id <- res_kmeans$cluster
 
 ### Cluster Visualization (PCA + K-Means) ###
-
 p_cluster <- fviz_cluster(res_kmeans, data = X_scaled,
                           geom = "point", ellipse.type = "norm",
                           ggtheme = theme_minimal(),
@@ -49,6 +52,7 @@ p_box <- ggplot(df_raw, aes(x = factor(cluster_id), y = gdp_per_capita, fill = f
 ggsave(file.path(PLOTS2_DIR, "boxplot_gdp.png"), p_box)
 
 ###  Cluster vs Real Income Level ###
+
 # Table with real income levels and assigned clusters
 eval_table <- table(Real_Income = df_raw$income, Cluster = res_kmeans$cluster)
 cat("\nCROSS-TABULATION: Real Income Level vs Clusters:\n")

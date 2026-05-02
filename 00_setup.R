@@ -22,7 +22,13 @@ indicators <- c(
   "inflation"      = "FP.CPI.TOTL.ZG"
 )
 
-df_raw <- WDI(indicator = indicators, country = "all", start = 2022, end = 2022, extra = T)
+df_raw <- WDI(
+  indicator = indicators, 
+  country = "all", 
+  start = 2022, 
+  end = 2022, 
+  extra = T
+)
 
 # Simple data cleaning
 df_raw <- df_raw[df_raw$region != "Aggregates", ]
@@ -34,7 +40,8 @@ df_raw[[TARGET_COL]] <- as.numeric(as.factor(df_raw$income))
 cat("Dataset loaded:", nrow(df_raw), "countries,", ncol(df_raw), "variables\n")
 
 # We select only the numeric indicators we downloaded
-X <- df_raw %>% select(all_of(names(indicators)))
+X <- df_raw %>% 
+  select(all_of(names(indicators)))
 
 # Descriptive statistics
 print(summary(X))
@@ -43,8 +50,8 @@ S <- var(X)
 R <- cor(X)
 
 # KMO and Bartlett's test for dataset adequacy
-bartlett_p <- psych::cortest.bartlett(cor(X), n = nrow(X))$p.value
-kmo_val    <- psych::KMO(X)$MSA
+bartlett_p <- psych::cortest.bartlett(R, n = nrow(X))$p.value
+kmo_val <- psych::KMO(X)$MSA
 
 cat("\nBartlett test p-value:", bartlett_p, "\n")
 cat("KMO (MSA):", round(kmo_val, 4), "\n")
@@ -54,4 +61,4 @@ X_scaled <- scale(X)
 
 # Save R workspace
 save(df_raw, X, X_scaled, R, S, file = "data/.workspace.RData")
-cat("\nWorkspace saved to data/.workspace.RData\n")
+cat("\nWorkspace saved to data/.workspace.RData")
