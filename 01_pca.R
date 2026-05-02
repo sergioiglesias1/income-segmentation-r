@@ -22,7 +22,7 @@ for (col in key_eco_indicators) {
   skew  <- round(moments::skewness(vals), 3)
   kurt  <- round(moments::kurtosis(vals), 3)
   
-  png(file.path(PLOTS1_DIR, paste0("distr_", col, ".png")), width = 800, height = 600)
+  png(file.path(PLOTS1_DIR, paste0("hist_", col, ".png")), width = 800, height = 600)
   
   hist(vals,
        main   = paste("Distribution Analysis:", col),
