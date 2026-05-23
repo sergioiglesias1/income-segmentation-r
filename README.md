@@ -40,7 +40,7 @@ income-segmentation-r/
 
 ## PCA results
 
-Applied on standardised indicators (mean 0, variance 1).
+The indicators are standardized (μ = 0, σ² = 1) to prevent features with higher variance from dominating the model, which would introduce scale bias and distort the results.
 
 | Component | Variance | Cumulative |
 |-----------|----------|------------|
@@ -51,6 +51,12 @@ Applied on standardised indicators (mean 0, variance 1).
 PC1 captures the development axis, with high loadings on GDP per capita, life expectancy and internet access. PC2 reflects economic volatility, driven mainly by inflation. Three components explain 88.67% of total variance, and the 3D scatter shows visible separation between income groups before any clustering is applied.
 
 ![PCA 3D](visualization/pca_viz/pca_3d.png)
+
+### PCA weights interpretation
+
+→ PC1 explains economic development of the country  
+→ PC2 captures inflation pressure  
+→ PC3 reflects telecom and digital infrastructure  
 
 ---
 
