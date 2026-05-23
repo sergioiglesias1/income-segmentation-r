@@ -113,6 +113,12 @@ No dataset download required, data is pulled automatically from the World Bank A
 - **Variables:** GDP per capita (PPP), internet users (%), mobile subscriptions, life expectancy, inflation (CPI)
 - **Coverage:** 169 countries after cleaning
 
+## Limitations
+
+- K-Means assumes spherical clusters, DBSCAN, GMM or Hierarchichal Clustering as alternatives...
+- Middle-income groups show intersection due to everything besides inflation
+- PCA reduces dimensionality but components are linear combinations, which limits interpretability
+
 ## License
 
 MIT License
