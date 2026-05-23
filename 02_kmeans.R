@@ -69,4 +69,23 @@ p_eval <- ggplot(eval_df, aes(x = Cluster, y = Real_Income, fill = Freq)) +
 
 ggsave(file.path(PLOTS2_DIR, "purity_heatmap.png"), p_eval)
 
+# Cluster profiling
+df_raw$cluster_id <- res_kmeans$cluster
+numeric_cols <- sapply(df_raw, is.numeric)
+
+cluster_profile <- aggregate(
+  df_raw[, numeric_cols],
+  by = list(cluster = df_raw$cluster_id),
+  mean
+)
+
+print(cluster_profile)
+
+# Cluster interpretation
+
+# 1 Developed economies
+# 2 High inflation unstable economies
+# 3 Developing economies
+# 4 Emerging economies
+
 cat("\nAnalysis complete. Results saved in visualization folders.\n")
