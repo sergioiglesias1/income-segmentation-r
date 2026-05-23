@@ -83,6 +83,22 @@ ggsave(file.path(PLOTS1_DIR, "scree_plot.png"), p_scree)
 pca_res  <- prcomp(X_scaled, scale. = FALSE)
 scores3d <- as.data.frame(pca_res$x[, 1:PCA_N_COMP])
 
+### PCA LOADINGS (VARIABLE CONTRIBUTION) ###
+loadings <- pca_res$rotation
+
+pc1_top <- sort(abs(loadings[,1]), decreasing = T)
+pc2_top <- sort(abs(loadings[,2]), decreasing = T)
+pc3_top <- sort(abs(loadings[,3]), decreasing = T)
+
+cat("\nTOP VARIABLES PC1:\n")
+print(pc1_top)
+
+cat("\nTOP VARIABLES PC2:\n")
+print(pc2_top)
+
+cat("\nTOP VARIABLES PC3:\n")
+print(pc3_top)
+
 # A cluster, a color for each income level
 point_colors <- rainbow(length(unique(df_raw[[TARGET_COL]])))[df_raw[[TARGET_COL]]]
 
