@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages(c("dplyr", "psych", "moments", "factoextra",
-                             "scatterplot3d", "ggplot2", "reshape2", "WDI", "clusterCrit", "aricode"))
+                             "scatterplot3d", "ggplot2", "reshape2", "WDI", "clusterCrit", "aricode", "lintr"))
         shell: Rscript {0}
 
       - name: Lint with lintr
