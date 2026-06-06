@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: ["*"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Install & Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install dependencies
+        run: |
+          install.packages(c("dplyr", "psych", "moments", "factoextra",
+                             "scatterplot3d", "ggplot2", "reshape2", "WDI", "clusterCrit", "aricode"))
+        shell: Rscript {0}
+
+      - name: Lint with lintr
+        run: lintr::lint_dir(".")
+        shell: Rscript {0}

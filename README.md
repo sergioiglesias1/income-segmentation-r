@@ -1,6 +1,7 @@
 # Income Segmentation in R: World Economies
 
 ![R](https://img.shields.io/badge/R-%3E%3D4.5.3-276DC3?style=flat&logo=r&logoColor=white)
+[![CI](https://github.com/sergioiglesias1/income-segmentation-r/actions/workflows/ci.yml/badge.svg)](https://github.com/sergioiglesias1/income-segmentation-r/actions/workflows/ci.yml)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 ![WDI](https://img.shields.io/badge/Data-World%20Bank%20WDI-004C97?style=flat&logo=worldbank&logoColor=white)
 
@@ -21,8 +22,8 @@ The pipeline runs in 3 steps after setting parameters in `config.R`:
 ## File Structure
 
 ```
-income-segmentation-r/
-│
+.
+├── .github/              # Automated checks on every push: install dependencies and lint with `lintr`.
 ├── visualization/
 │   ├── pca_viz/
 │   └── kmeans_viz/
